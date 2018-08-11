@@ -26,5 +26,7 @@
     <!-- 引用dubbo服务 -->
     <dubbo:application name="e3-sso-web"/>
     <dubbo:registry protocol="zookeeper" address="39.108.111.94:2181,39.108.111.94:2182,39.108.111.94:2183"/>
-
+    <dubbo:reference interface="cn.e3mall.sso.service.RegisterService" id="registerService" />
+    <dubbo:reference interface="cn.e3mall.sso.service.LoginService" id="loginService" />
+    <dubbo:reference interface="cn.e3mall.sso.service.TokenService" id="tokenService" />
 </beans>
