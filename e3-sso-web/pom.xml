@@ -10,12 +10,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
-    <artifactId>e3-item-web</artifactId>
+    <artifactId>e3-sso-web</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>cn.e3mall</groupId>
-            <artifactId>e3-manager-interface</artifactId>
+            <artifactId>e3-sso-interface</artifactId>
             <version>1.0.0</version>
         </dependency>
         <!-- spring的依赖 -->
@@ -91,14 +91,6 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-all</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
@@ -110,7 +102,7 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <configuration>
                     <path>/</path>
-                    <port>8086</port>
+                    <port>8088</port>
                 </configuration>
             </plugin>
         </plugins>
