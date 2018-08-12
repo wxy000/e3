@@ -3,6 +3,8 @@ package cn.e3mall.common.jedis;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+import java.util.List;
+
 public class JedisClientPool implements JedisClient {
 	
 	private JedisPool jedisPool;
@@ -31,6 +33,15 @@ public class JedisClientPool implements JedisClient {
 		Jedis jedis = jedisPool.getResource();
         jedis.auth(REDIS_PASS);
 		Boolean result = jedis.exists(key);
+		jedis.close();
+		return result;
+	}
+
+	@Override
+	public Boolean hexists(String key, String field) {
+		Jedis jedis = jedisPool.getResource();
+		jedis.auth(REDIS_PASS);
+		Boolean result = jedis.hexists(key, field);
 		jedis.close();
 		return result;
 	}
@@ -89,7 +100,16 @@ public class JedisClientPool implements JedisClient {
 		return result;
 	}
 
-	public void setJedisPool(JedisPool jedisPool) {
+    @Override
+    public List<String> hvals(String key) {
+        Jedis jedis = jedisPool.getResource();
+        jedis.auth(REDIS_PASS);
+        List result = jedis.hvals(key);
+        jedis.close();
+        return result;
+    }
+
+    public void setJedisPool(JedisPool jedisPool) {
 		this.jedisPool = jedisPool;
 	}
 }
